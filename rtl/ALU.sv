@@ -3,11 +3,11 @@
 module ALU
   import cpu_pkg::*;
 (
-    input  word_t a,
-    input  word_t b,
-    output word_t out,
+  input  word_t a,
+  input  word_t b,
+  output word_t out,
 
-    input alu_op_t op
+  input alu_op_t op
 );
 
   always_comb begin

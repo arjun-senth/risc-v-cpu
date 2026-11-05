@@ -3,11 +3,11 @@
 module InstrMem
   import cpu_pkg::*;
 #(
-    parameter int    DEPTH = 4096,
-    parameter string INIT = "program.mem"
+  parameter int    DEPTH = 128,
+  parameter string INIT = "program.mem"
 ) (
-    input  word_t addr,
-    output word_t instr
+  input  word_t addr,
+  output word_t instr
 );
 
   word_t mem[DEPTH];

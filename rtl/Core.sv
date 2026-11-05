@@ -4,8 +4,8 @@
 module Core
   import cpu_pkg::*;
 (
-    input logic clk,
-    input logic rst
+  input logic clk,
+  input logic rst
 );
 
   word_t pc_next, pc_addr;
@@ -22,15 +22,15 @@ module Core
 
   // IF
   ProgramCounter program_counter (
-      .clk(clk),
-      .rst(rst),
-      .pc_next(pc_next),
-      .pc_addr(pc_addr)
+    .clk(clk),
+    .rst(rst),
+    .pc_next(pc_next),
+    .pc_addr(pc_addr)
   );
 
   InstrMem instr_mem (
-      .addr (pc_addr),
-      .instr(instr)
+    .addr (pc_addr),
+    .instr(instr)
   );
 
   wire take_branch = ctrl.branch & taken;
@@ -42,28 +42,28 @@ module Core
 
   // ID
   Decoder decoder (
-      .instr(instr),
-      .rs1(rs1_i),
-      .rs2(rs2_i),
-      .rd(rd_i),
-      .funct3(funct3),
-      .ctrl(ctrl)
+    .instr(instr),
+    .rs1(rs1_i),
+    .rs2(rs2_i),
+    .rd(rd_i),
+    .funct3(funct3),
+    .ctrl(ctrl)
   );
 
   RegisterFile regfile (
-      .clk(clk),
-      .rs1_addr(rs1_i),
-      .rs2_addr(rs2_i),
-      .rs1_data(rs1_d),
-      .rs2_data(rs2_d),
-      .we(ctrl.reg_write),
-      .rd_addr(rd_i),
-      .rd_data(rd_d)
+    .clk(clk),
+    .rs1_addr(rs1_i),
+    .rs2_addr(rs2_i),
+    .rs1_data(rs1_d),
+    .rs2_data(rs2_d),
+    .we(ctrl.reg_write),
+    .rd_addr(rd_i),
+    .rd_data(rd_d)
   );
 
   ImmediateGen immediate_gen (
-      .instr(instr),
-      .immediate(immediate)
+    .instr(instr),
+    .immediate(immediate)
   );
 
   // EX
@@ -88,32 +88,32 @@ module Core
   end
 
   ALU alu (
-      .a  (alu_a),
-      .b  (alu_b),
-      .op (ctrl.alu_op),
-      .out(alu_out)
+    .a  (alu_a),
+    .b  (alu_b),
+    .op (ctrl.alu_op),
+    .out(alu_out)
   );
 
   wire taken;
 
   BranchComp branch_comp (
-      .rs1  (rs1_d),
-      .rs2  (rs2_d),
-      .funct(funct3),
-      .taken(taken)
+    .rs1  (rs1_d),
+    .rs2  (rs2_d),
+    .funct(funct3),
+    .taken(taken)
   );
 
   word_t rdata;
 
   // MEM
   DataMem data_mem (
-      .clk(clk),
-      .mem_write(ctrl.mem_write),
-      .mem_read(ctrl.mem_read),
-      .funct3(funct3),
-      .addr(alu_out),
-      .wdata(rs2_d),
-      .rdata(rdata)
+    .clk(clk),
+    .mem_write(ctrl.mem_write),
+    .mem_read(ctrl.mem_read),
+    .funct3(funct3),
+    .addr(alu_out),
+    .wdata(rs2_d),
+    .rdata(rdata)
   );
 
   // WB

@@ -3,8 +3,8 @@
 module ImmediateGen
   import cpu_pkg::*;
 (
-    input         [31:0] instr,
-    output word_t        immediate
+  input         [31:0] instr,
+  output word_t        immediate
 );
   always_comb begin
     case (instr[6:0])

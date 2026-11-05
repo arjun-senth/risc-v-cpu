@@ -3,17 +3,17 @@
 module RegisterFile
   import cpu_pkg::*;
 (
-    input logic clk,
+  input logic clk,
 
-    input logic [4:0] rs1_addr,
-    input logic [4:0] rs2_addr,
+  input logic [4:0] rs1_addr,
+  input logic [4:0] rs2_addr,
 
-    output word_t rs1_data,
-    output word_t rs2_data,
+  output word_t rs1_data,
+  output word_t rs2_data,
 
-    input logic        we,
-    input logic  [4:0] rd_addr,
-    input word_t       rd_data
+  input logic        we,
+  input logic  [4:0] rd_addr,
+  input word_t       rd_data
 );
   word_t regs[32];
 

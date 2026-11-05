@@ -23,10 +23,10 @@
 module BranchComp
   import cpu_pkg::*;
 (
-    input  word_t       rs1,
-    input  word_t       rs2,
-    input  logic  [2:0] funct,
-    output logic        taken
+  input  word_t       rs1,
+  input  word_t       rs2,
+  input  logic  [2:0] funct,
+  output logic        taken
 );
   always_comb begin
     case (funct)

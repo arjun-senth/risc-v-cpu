@@ -3,15 +3,15 @@
 module DataMem
   import cpu_pkg::*;
 #(
-    parameter int DEPTH = 4096
+  parameter int DEPTH = 128
 ) (
-    input  logic        clk,
-    input  logic        mem_write,
-    input  logic        mem_read,
-    input  logic  [2:0] funct3,
-    input  word_t       addr,
-    input  word_t       wdata,
-    output word_t       rdata
+  input  logic        clk,
+  input  logic        mem_write,
+  input  logic        mem_read,
+  input  logic  [2:0] funct3,
+  input  word_t       addr,
+  input  word_t       wdata,
+  output word_t       rdata
 );
 
   localparam int IDXW = $clog2(DEPTH);

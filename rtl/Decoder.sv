@@ -3,12 +3,12 @@
 module Decoder
   import cpu_pkg::*;
 (
-    input  logic  [31:0] instr,
-    output logic  [ 4:0] rs1,
-    output logic  [ 4:0] rs2,
-    output logic  [ 4:0] rd,
-    output logic  [ 2:0] funct3,
-    output ctrl_t        ctrl
+  input  logic  [31:0] instr,
+  output logic  [ 4:0] rs1,
+  output logic  [ 4:0] rs2,
+  output logic  [ 4:0] rd,
+  output logic  [ 2:0] funct3,
+  output ctrl_t        ctrl
 );
 
   assign rs1    = instr[19:15];
